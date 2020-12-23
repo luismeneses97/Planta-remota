@@ -5,6 +5,7 @@ import requests
 import time, sys, os, math
 import random
 import math
+#Configuracion de credenciales en firebase
 config = {
   "apiKey": "AIzaSyCBgqH4iFLg-W9sJcaLu3uRAXCMLI1DqDs",
   "authDomain": "plataforma-practicas-remotas.firebaseapp.com",
@@ -13,7 +14,7 @@ config = {
   "storageBucket": "plataforma-practicas-remotas.appspot.com",
   "messagingSenderId": "706879783652"
 }
-# comunicacion con base de datos
+# Comunicacion con base de datos
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 email = 'lalfonso7777@gmail.com'
@@ -21,11 +22,11 @@ password= '123456789'
 user = auth.sign_in_with_email_and_password(email, password)
 user = auth.refresh(user['refreshToken'])
 db = firebase.database()
-# calculo de gravedad
+# Calculo de gravedad
 def gravedad(altura, tiempo):
     gravedad = ((2*altura)/100)/((tiempo/1000)**2)
     return gravedad
-# conexion con arduino
+# Conexion con arduino
 serialArduino = serial.Serial("COM3",115200)
 
 while True:
